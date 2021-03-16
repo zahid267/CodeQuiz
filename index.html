@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <title>Gradebook</title>
+  </head>
+  <body>
+    <div class="card">
+      <section id="intro">
+        <a href="#" onclick="">View Highscores</a>
+        <h2>Coding Quiz Challenge</h2>
+        <p>Try to answer the following code-related quiestions within the time
+          limit. Keep in mind that incorrect answers will penalize your score/time 
+          by ten seconds!</time>
+        </p>
+        <button id="startBtn">Start Qiuz</button>
+      </section>
+      <section id="questSection" class="hide">
+        <h4>Time Remaining : <span id=timer></span></h4>
+        <ol id="questDisp">
+          <p id="question"></p>
+          <li id="ans1"></li>
+          <li id="ans2"></li>
+          <li id="ans3"></li>
+          <li id="ans4"></li>
+        </ol>
+        <hr>
+        <span id="message"></span>   
+      </section>
+      <section id="result" class="hide">
+        <h3>All done!</h3>
+        <p>Your final score is : <span id="score"></span></p>
+        <label for="initial">Enter initials :</label>
+        <input type="text" id="initial" value="" placeholder="Enter initials">
+        <button id="saveBtn">Submit</button>
+      </section>
+      <section id="scoredisp" class="hide">
+        <h2>Highscores</h2>
+        <h5>Highest Score : <span id="HighScore"></span></h5>
+        <ol id="score_list"></ol>
+        <button id="go_back">Go Back</button>
+        <button id="clear_score">Clear Highscores</button>
+      </section>
+        
+    
+    <script src="./assets/js/script.js"></script>
+  </body>
+</html>
