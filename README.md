@@ -27,10 +27,7 @@ The following animation demonstrates the application functionality:
 
 ![A user clicks through an interactive coding quiz, then enters initials to save the high score before resetting and starting over.](./assets/CodeQuizDemo.gif)
 
-## Review
 
-* The URL of the deployed application:https: //zahid267.github.io/CodeQuiz/
+* The URL of the deployed application: https://zahid267.github.io/CodeQuiz/
 
-* The URL of the GitHub repository:https: //github.com/zahid267/CodeQuiz
-
----
+* The URL of the GitHub repository: https://github.com/zahid267/CodeQuiz
