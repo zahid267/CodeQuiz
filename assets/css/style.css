@@ -11,19 +11,19 @@ body {
   color: #001b44;
 }
 
-h2, h3, h5, #result, #score_list{
+h2, h3, h5, #result, #score_list, #scoredisp{
   text-align: center;
 }
 h4{
   text-align: right;
 }
-li {
+#questDisp li {
   /*list-style: none;*/
   margin-top: 10px;
   margin-left: 30px;
   /*display: block;*/
 }
-li:hover{
+#questDisp li:hover{
   background: darkgoldenrod;
   color: lightblue;
   cursor: pointer;
@@ -46,7 +46,11 @@ button {
   margin: 0.6em auto;
   display: block;
 }
-
+#clear_score{
+  font-size: 0.8em;
+  padding: 20px 10px;
+  width: 600px;
+}
 label {
   color: #212121;
 }
@@ -67,7 +71,7 @@ a{
   border-radius: 8px;
   box-shadow: rgba(60, 64, 67, 2) 0 1px 2px 0,
     rgba(60, 64, 67, 0.15) 0 2px 4px 3px;
-  margin: 40px auto;
+  margin: 10px auto;
   padding: 20px;
   width: 70vw;
   display: block;
@@ -100,13 +104,13 @@ a{
   color : red;
   align-content: center;
 }
-.selected{
+.selectedR{   /*Right answer selected class*/
   background: darkgoldenrod;
   color: lightblue;
   cursor:not-allowed;
   
 }
-.selected:after
+.selectedR:after
 {content:'\2713';
   display:inline-block;
   color:rgb(3, 77, 3);
@@ -115,3 +119,57 @@ a{
   font-weight:bolder;
   font-size: larger;
   }
+.selectedW{   /*Wrong answer selected class*/
+  background: darkgoldenrod;
+  color: lightblue;
+  cursor:not-allowed;
+  
+}
+.selectedW:after
+{content:'\2716';
+  display:inline-block;
+  color:red;
+  padding:0 10px 0 10px;
+  width:10px;
+  font-weight:bolder;
+  font-size: larger;
+  }
+
+
+  /* Tablets - header changes color */
+@media screen and (max-width: 992px) {
+
+} 
+/* Large smartphones - navbar changes color */
+@media screen and (max-width: 768px) {
+ body{
+   font-size: 20px;
+ } 
+ button{
+  font-size: 0.8em;
+  line-height: 12px;
+  padding: 10px 15px;
+ }
+/* Small smartphones - image placeholders change color */
+@media screen and (max-width: 576px) {
+  body{
+    font-size: 15px;
+  } 
+  h2{
+    font-size: 150%;
+  }
+  .card{
+    margin: 5px auto;
+    padding: 5px;
+    width: 90vw;
+  }
+  .card::after {
+    content: "";
+  }
+  #clear_score{
+    font-size: 0.7em;
+    padding: 5px 8px;
+    width: 200px;
+  }
+  
+}

@@ -70,7 +70,7 @@ var question1={
   }
 
     var totQuestions = 10; var qcnt = 1;
-    var winCounter = 0; var loseCounter = 0;  var timerCount = 50;
+    var winCounter = 0; var loseCounter = 0;  var timerCount = 100; /// 10 seeconds per question
     var gameOver = false;
     var questDone = false;
     var score = 0
@@ -83,7 +83,8 @@ function startQuiz(event){
   questSectionEl.className = "show";
   qcnt = 1; gameOver = false; score = 0
     questDone = false
-    timerCount = 50;
+    timerCount = 100;   //// 100 seconds -- 10 seconds per question
+    timerEl.textContent = timerCount;
     startTimer();
     displayQuestion(qcnt);
   //console.log("tot-quest : " + totquest);
@@ -94,54 +95,43 @@ function startTimer() {
   // Sets timer
   var timer = setInterval(function() {
     timerCount--;
-    console.log("here  - 1 --- timerCount : " + timerCount);
     timerEl.textContent = timerCount;
     if (timerCount >= 0) {
-      // Tests if win condition is met
-      console.log("here  - 2 --- timerCount : " + timerCount);
+      // Tests if game end condition is met
       if (gameOver && timerCount > 0) {
         // Clears interval and stops timer
         clearInterval(timer);
         showResult();
-        console.log("here  - 3 --- timerCount : " + timerCount);
       }else if(questDone && qcnt <= totQuestions){
-
         qcnt++;
         questDone = false;
         messageEl.textContent = "";
         messageEl.className = "";
         displayQuestion(qcnt);
-        console.log("here  - 4 --- timerCount : " + timerCount);
-     /* }else{
-        gameOver = true;
-        clearInterval(timer);
-        showResult();
-        console.log("here  - 5 --- timerCount : " + timerCount);
-        */
       }
     }
     // Tests if time has run out
-    if (timerCount === 0) {
+    if (timerCount <= 0) {
       // Clears interval
       clearInterval(timer);
       gameOver = true;
       showResult()
     }
-  }, 5000);
+  }, 1000);
 }
 
 questDisp.addEventListener('click',function(event){
-  //alert(event.target.textContent);
-  //alert(event.target.tagName );
   if(event.target.tagName.toLowerCase() === "li" && questDone === false){
     if(event.target.textContent === answer){
-      event.target.className = "selected";
+      event.target.className = "selectedR";
       messageEl.textContent = "CORRECT";
       messageEl.className = "rightAnswer"
       score = score + 10;
     }else{
+      event.target.className = "selectedW";
       messageEl.textContent = "WRONG";
       messageEl.className = "wrongAnswer";
+      timerCount = timerCount - 10;
     }
     questDone = true;
     if(qcnt >= totQuestions){gameOver = true}
@@ -194,6 +184,7 @@ saveScoreBtn.addEventListener("click", function(){
 });
 
 function showHighscore(){
+  introEl.className = "hide";
   var hscore = localStorage.getItem("HighScore");
   if(document.getElementById('HighScore') && hscore !== "" && hscore > 0){
     document.getElementById('HighScore').textContent = hscore;
@@ -209,23 +200,7 @@ document.getElementById("clear_score").addEventListener('click', function(){
   localStorage.setItem("totalScore","");
   localStorage.setItem("Initials", "");
   localStorage.setItem("HighScore", "");
+  document.getElementById('HighScore').textContent = "";
+  scoreListEl.innerHTML = "";
   document.getElementById("go_back").click();
 });
-/*
-var studentGrade = {
-    student: student.value,
-    grade: grade.value,
-    comment: comment.value.trim()
-  };
-
-  localStorage.setItem("studentGrade", JSON.stringify(studentGrade));
-  renderMessage();
-
-function renderMessage() {
-  var lastGrade = JSON.parse(localStorage.getItem("studentGrade"));
-  if (lastGrade !== null) {
-    document.querySelector(".message").textContent = lastGrade.student + 
-    " received a/an " + lastGrade.grade
-  }
-}
-*/
